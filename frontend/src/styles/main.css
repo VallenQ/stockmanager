@@ -1,0 +1,46 @@
+:root{
+  --c1: #0FC2C0;
+  --c2: #0CABA8;
+  --c3: #008F8C;
+  --c4: #015958;
+  --c5: #023535;
+  --grey-100: #f5f6f7;
+  --grey-200: #e6e7e8;
+  --text: #063233;
+  --white: #ffffff;
+}
+
+*{box-sizing:border-box;font-family:Inter, system-ui, sans-serif;color:var(--text)}
+body{margin:0;background:linear-gradient(180deg,var(--grey-100),#fff);min-height:100vh}
+.container{max-width:1100px;margin:28px auto;padding:0 16px}
+
+/* Top nav */
+.nav-top{background:linear-gradient(90deg,var(--c2),var(--c3));box-shadow:0 2px 6px rgba(2,3,3,0.12);position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+.brand a{color:var(--white);font-weight:700;text-decoration:none;font-size:1.2rem}
+.nav-links{list-style:none;display:flex;gap:12px;margin:0;padding:0;align-items:center}
+.nav-links a{color:var(--white);text-decoration:none;padding:8px 10px;border-radius:8px}
+.nav-links li .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.18);color:var(--white);padding:6px 10px;border-radius:8px}
+
+/* Cards / pages */
+.card{background:var(--white);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(1,9,9,0.06);margin-top:18px}
+.page{margin-top:18px}
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+
+/* Buttons */
+.btn-primary{background:var(--c1);color:var(--white);border:none;padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn-ghost{background:transparent;border:1px solid var(--c3);padding:6px 10px;border-radius:8px}
+.btn-danger{background:#ff6b6b;color:white;border:none;padding:6px 8px;border-radius:8px;margin-left:8px}
+
+/* Forms */
+form label{display:block;margin-top:10px;font-weight:600}
+input, textarea, select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--grey-200);margin-top:6px}
+textarea{min-height:80px}
+
+/* Table */
+.table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden}
+.table th, .table td{padding:10px;border-bottom:1px solid var(--grey-200);text-align:left}
+.table thead{background:linear-gradient(90deg,var(--c4),var(--c5));color:white}
+
+/* Alerts */
+.alert{background:#ffe9e9;color:#8b0000;padding:8px;border-radius:8px;margin-bottom:8px}
