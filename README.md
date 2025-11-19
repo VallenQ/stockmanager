@@ -1,64 +1,47 @@
-Como rodar o projeto stockmanager localmente:
-Requisitos:
+# Makefile para StockManager
 
--Node.js 20+
+Este Makefile foi criado para automatizar a instalação, criação do banco de dados e execução do projeto **StockManager** no Windows (compatível com `cmd`) e Linux (exige adaptação para `gnome-terminal`).
 
--NPM 10+
+---
 
--Git
+## Comandos disponíveis
 
-1) Clonar o repositório
-git clone git@github.com:VallenQ/stockmanager.git
-cd stockmanager
+### `make help`
+Exibe a lista de comandos disponíveis e suas descrições.
 
-2) Rodar o BACKEND
+### `make backend`
+Instala todas as dependências do backend (Node.js/NPM).
 
-Abra um terminal dentro da pasta:
+### `make frontend`
+Instala todas as dependências do frontend (Node.js/NPM).
 
-cd backend
-npm install
+### `make seed`
+Cria o banco de dados SQLite com os dados iniciais:
+- Admin: `admin@example.com` / senha: `admin123`
+- Produtos e fornecedores já cadastrados
 
-Criar o banco de dados com seed:
-npm run seed
+### `make run-backend`
+Roda o backend em modo de desenvolvimento:
+- URL: [http://localhost:4000](http://localhost:4000)
 
+### `make run-frontend`
+Roda o frontend em modo de desenvolvimento:
+- URL: [http://localhost:5173](http://localhost:5173)
 
-Isso cria o arquivo db.sqlite com:
+### `make run`
+Roda **backend e frontend simultaneamente** em janelas separadas:
+- No Windows: abre duas janelas `cmd` para backend e frontend automaticamente.
+- No Linux/Mac: deve adaptar o comando para abrir terminais (`gnome-terminal` ou `osascript`).
 
-Admin: admin@example.com
+### `make clean`
+Remove todas as pastas `node_modules` do backend e frontend.
 
-Senha: admin123
+---
 
-Produtos e fornecedores já cadastrados
+## Exemplos de uso
 
-Rodar o servidor:
-npm run dev
+1. Instalar dependências do backend e frontend:
 
-
-Backend sobe em:
-
-http://localhost:4000
-
-3) Rodar o FRONTEND
-
-Abra um outro terminal:
-
-cd frontend
-npm install
-npm run dev
-
-
-Frontend sobe em:
-
-http://localhost:5173
-
-4) Acessar o sistema
-
-Abra no navegador:
-
-http://localhost:5173
-
-
-Entre com o admin:
-
-email: admin@example.com
-senha: admin123
+```bash
+make backend
+make frontend
