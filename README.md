@@ -1,100 +1,76 @@
-# 📦 StockManager – Makefile Cross-Platform
+#  StockManager – Automação com Makefile
 
-Este projeto utiliza um **Makefile compatível com Windows, Linux e macOS** para facilitar o gerenciamento do backend e frontend — incluindo instalação, execução de scripts, inicialização dos servidores e limpeza de dependências.
-
-O Makefile detecta automaticamente o sistema operacional e executa os comandos adequados.
+Este repositório utiliza um **Makefile simples e totalmente cross-platform** (Windows, Linux e macOS) para automatizar tarefas comuns no desenvolvimento do StockManager.  
+Ele gerencia instalação de dependências, execução dos servidores, limpeza do ambiente e rodagem de seeds, tudo com um único comando.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura Esperada
 
-A seguinte estrutura é esperada para o correto funcionamento do Makefile:
+O Makefile foi criado para funcionar com a seguinte organização:
 
 backend/
 frontend/
 Makefile
 
-yaml
-Copy code
-
-Cada pasta deve conter seu próprio `package.json`.
+Cada diretório deve conter seu próprio projeto Node.js (`package.json`).
 
 ---
 
-## 🚀 Comandos Disponíveis
+## 🚀 Comandos Principais
 
-### ▶️ Executar Backend e Frontend
-
-Inicia o backend e o frontend simultaneamente:
+### 🟢 Rodar a Aplicação Completa
+Inicia backend e frontend simultaneamente:
 
 ```sh
 make run
-Executar individualmente:
+🟦 Rodar Somente o Backend
 
-sh
-Copy code
 make run-backend
+🟧 Rodar Somente o Frontend
+
 make run-frontend
-📥 Instalar Dependências
+📦 Instalação de Dependências
 Instalar dependências do backend:
 
-sh
-Copy code
 make backend
 Instalar dependências do frontend:
 
-sh
-Copy code
 make frontend
-Instalar tudo:
+🌱 Executar Seeds
+O Makefile também executa o script de seed do backend:
 
-sh
-Copy code
-make all
-Obs: No Makefile original, all exibe apenas ajuda, mas pode ser alterado para instalar tudo caso desejado.
-
-🌱 Executar Seeds (Backend)
-Executa o script de seed do backend:
-
-sh
-Copy code
 make seed
-🧹 Limpar node_modules
-Remove node_modules do backend e frontend:
+🧹 Limpeza
+Remove todos os node_modules do projeto (backend e frontend):
 
-sh
-Copy code
 make clean
-Compatível com Windows (rd /s /q) e Linux/macOS (rm -rf).
+O comando detecta automaticamente seu sistema operacional e usa:
 
-❓ Ajuda
-Mostrar todos os comandos disponíveis:
+rd /s /q no Windows
 
-sh
-Copy code
+rm -rf no Linux/macOS
+
+❓ Exibir Ajuda
+Lista todos os comandos do Makefile:
+
 make help
-🖥️ Detecção Automática de Sistema Operacional
-O Makefile identifica automaticamente o ambiente:
+🖥️ Sobre a Detecção de Sistema Operacional
+O Makefile identifica o sistema automaticamente:
 
-Windows → IS_WINDOWS=true
+IS_WINDOWS=true em Windows
 
-Linux/macOS → IS_WINDOWS=false
+IS_WINDOWS=false em Linux e macOS
 
-Com isso, ele executa corretamente:
+Isso garante que os comandos corretos sejam usados em qualquer ambiente.
 
-Scripts .cmd ou .sh
-
-Comandos adequados para remoção de diretórios
-
-Execução de scripts de inicialização
-
-✔️ Resumo dos Targets
-Comando	Função
+✔️ Lista Rápida 
+Comando	Ação
 make backend	Instala dependências do backend
 make frontend	Instala dependências do frontend
-make seed	Executa seed no backend
-make run	Inicia backend e frontend simultaneamente
-make run-backend	Executa apenas o backend
-make run-frontend	Executa apenas o frontend
-make clean	Remove todos os node_modules
-make help	Exibe comandos disponíveis
+make seed	Roda o seed do backend
+make run	Inicia backend + frontend
+make run-backend	Inicia apenas o backend
+make run-frontend	Inicia apenas o frontend
+make clean	Remove node_modules
+make help	Mostra ajuda
