@@ -23,47 +23,6 @@ Cada diretório deve conter seu próprio projeto Node.js (`package.json`).
 Inicia backend e frontend simultaneamente:
 
 ```sh
-make run
-🟦 Rodar Somente o Backend
-
-make run-backend
-🟧 Rodar Somente o Frontend
-
-make run-frontend
-📦 Instalação de Dependências
-Instalar dependências do backend:
-
-make backend
-Instalar dependências do frontend:
-
-make frontend
-🌱 Executar Seeds
-O Makefile também executa o script de seed do backend:
-
-make seed
-🧹 Limpeza
-Remove todos os node_modules do projeto (backend e frontend):
-
-make clean
-O comando detecta automaticamente seu sistema operacional e usa:
-
-rd /s /q no Windows
-
-rm -rf no Linux/macOS
-
-❓ Exibir Ajuda
-Lista todos os comandos do Makefile:
-
-make help
-🖥️ Sobre a Detecção de Sistema Operacional
-O Makefile identifica o sistema automaticamente:
-
-IS_WINDOWS=true em Windows
-
-IS_WINDOWS=false em Linux e macOS
-
-Isso garante que os comandos corretos sejam usados em qualquer ambiente.
-
 ✔️ Lista Rápida 
 Comando	Ação
 make backend	Instala dependências do backend
