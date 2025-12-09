@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import API from '../api/api';
 import { saveToken } from '../utils/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login(){
   const [email,setEmail]=useState('');
@@ -32,6 +32,10 @@ export default function Login(){
         <input type="password" value={password} onChange={e=>setPassword(e.target.value)} />
         <button className="btn-primary" type="submit">Entrar</button>
       </form>
+
+      <div style={{ marginTop: 12 }}>
+        <Link to="/recover">Recuperar senha</Link>
+      </div>
     </div>
   );
 }

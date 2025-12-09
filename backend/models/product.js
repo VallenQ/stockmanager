@@ -1,3 +1,4 @@
+// models/product.js
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -8,7 +9,8 @@ module.exports = (sequelize) => {
     description: { type: DataTypes.TEXT, allowNull: true },
     price: { type: DataTypes.DECIMAL(10,2), allowNull: false, defaultValue: 0.0 },
     stock: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
-    supplierId: { type: DataTypes.INTEGER, allowNull: true }
+    supplierId: { type: DataTypes.INTEGER, allowNull: true },
+    imageLink: { type: DataTypes.STRING, allowNull: true } // novo campo para o link da imagem
   }, { timestamps: true });
 
   return Product;

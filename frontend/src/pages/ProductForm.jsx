@@ -6,20 +6,33 @@ export default function ProductForm(){
   const { id } = useParams();
   const navigate = useNavigate();
   const [suppliers, setSuppliers] = useState([]);
-  const [form, setForm] = useState({ sku:'', name:'', description:'', price:0, stock:0, supplierId: '' });
+  const [form, setForm] = useState({
+    sku:'', name:'', description:'', price:0, stock:0, supplierId: '', imageLink: ''
+  });
 
   useEffect(()=>{
-    API.get('/suppliers').then(r=>setSuppliers(r.data));
+    API.get('/suppliers').then(r=>setSuppliers(r.data)).catch(()=>setSuppliers([]));
     if(id){
-      API.get(`/products/${id}`).then(r=>setForm(r.data));
+      API.get(`/products/${id}`).then(r=>{
+        // garante que imageLink exista no form mesmo se backend antigo não tiver
+        setForm(prev => ({ ...prev, ...r.data, imageLink: r.data.imageLink || '' }));
+      }).catch(()=>{});
     }
   }, [id]);
 
   async function submit(e){
     e.preventDefault();
     try{
-      if (id) await API.put(`/products/${id}`, form);
-      else await API.post('/products', form);
+      // converte valores numéricos
+      const payload = {
+        ...form,
+        price: Number(form.price || 0),
+        stock: parseInt(form.stock || 0, 10) || 0,
+        supplierId: form.supplierId || null
+      };
+
+      if (id) await API.put(`/products/${id}`, payload);
+      else await API.post('/products', payload);
       navigate('/products');
     } catch(err) { alert(err.response?.data?.error || 'Erro'); }
   }
@@ -43,6 +56,14 @@ export default function ProductForm(){
           <option value="">-- selecione --</option>
           {suppliers.map(s=> <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>
+
+        <label>Link da imagem</label>
+        <input
+          placeholder="https://exemplo.com/imagem.jpg"
+          value={form.imageLink || ''}
+          onChange={e=>setForm({...form, imageLink: e.target.value})}
+        />
+
         <button className="btn-primary" type="submit">Salvar</button>
       </form>
     </div>
